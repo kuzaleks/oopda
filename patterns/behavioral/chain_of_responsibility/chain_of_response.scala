@@ -32,14 +32,25 @@ class ConcreteHandler2(override val handler: Option[Handler]) extends Handler {
   }
 }
 
+
+class Application extends Handler {
+  override val handler = Option(null)
+  override def handle(req: Request) {
+    println("Application 1.0")
+  }
+}
+
+
 object Client {
   def main(args: Array[String]) {
     println("Hello")
 
-    val h2 = new ConcreteHandler2(Option(null))
+    val app = new Application
+    val h2 = new ConcreteHandler2(Option(app))
     val h1 = new ConcreteHandler1(Option(h2))
   
     h1.handle(StringRequest("1"))
     h1.handle(StringRequest("2"))
+    h1.handle(StringRequest("Hello"))
   }
 }
