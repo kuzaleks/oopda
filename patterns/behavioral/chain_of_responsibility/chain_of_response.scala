@@ -1,5 +1,8 @@
-// Avoid coupling the sender of the request to the receiver by giving more than one object
-// the chance to handle the request
+/*
+ * Avoid coupling the sender of the request to the receiver by giving more than one object
+ the chance to handle the request
+*/
+
 
 abstract class Request
 case class StringRequest(s: String) extends Request
